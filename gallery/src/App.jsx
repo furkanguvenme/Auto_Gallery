@@ -35,10 +35,10 @@ export default function App() {
         <Route path="/" exact>
           <Login />
         </Route>
-        <Route path="/register" exact>
+        <Route path="/register">
           <Register />
         </Route>
-        <Route path="/home" exact>
+        <Route path="/home">
           <Home />
         </Route>
         <Route path="/carPage">
