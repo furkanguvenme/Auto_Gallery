@@ -5,6 +5,7 @@ import { getData, getUsers } from "./store/actions/actions";
 import Loading from "./components/loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Register from "./components/register";
 import Login from "./components/login";

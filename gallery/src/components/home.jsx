@@ -1,15 +1,10 @@
-import { CgProfile } from "react-icons/cg";
 import "./home.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  activeBrand,
-  brandName,
-  modelData,
-  modelName,
-} from "../store/actions/actions";
+import { activeBrand, brandName, modelName } from "../store/actions/actions";
 import Card from "./homeCard";
 import { useHistory } from "react-router-dom";
+import Profile from "./profile";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -17,7 +12,6 @@ export default function Home() {
   const allCars = useSelector((store) => store.carData);
   const brand = useSelector((store) => store.brand);
   const brandCars = useSelector((store) => store.activeBrandData);
-  const nameModel = useSelector((store) => store.model);
 
   useEffect(() => {
     if (allCars) {
@@ -33,46 +27,46 @@ export default function Home() {
   };
 
   const handleModel = (e) => {
-    dispatch(modelName(e.target.name));
+    dispatch(modelName(e.currentTarget.name));
     history.push("/carPage");
   };
 
   return (
     <>
-      <header className="flex flex-row justify-around items-center w-full h-[15vh]">
-        <img
-          src="https://i.hizliresim.com/5zl6d7o.png"
-          className="w-[456px] h-[71.72px] shadow"
-        />
-        <div className="flex flex-row w-4/6 justify-around">
-          <div className="flex flex-row justify-between gap-[5vw]">
-            <button className="button" name="Toyota" onClick={handleClick}>
-              TOYOTA
-            </button>
-            <button className="button" name="Honda" onClick={handleClick}>
-              HONDA
-            </button>
-            <button className="button" name="BMW" onClick={handleClick}>
-              BMW
-            </button>
-            <button
-              className="button"
-              name="Mercedes-Benz"
-              onClick={handleClick}
-            >
-              MERCEDES-BENZ
-            </button>
+      <div className="w-full h-full bg-cover bg-[url('https://jooinn.com/images/new-road-1.jpg')]">
+        <header className="flex flex-row justify-around items-center w-full h-[15vh]">
+          <img
+            src="https://i.hizliresim.com/5zl6d7o.png"
+            className="w-[456px] h-[71.72px] shadow"
+          />
+          <div className="flex flex-row w-4/6 justify-around">
+            <div className="flex flex-row justify-between gap-[5vw]">
+              <button className="button" name="Toyota" onClick={handleClick}>
+                TOYOTA
+              </button>
+              <button className="button" name="Honda" onClick={handleClick}>
+                HONDA
+              </button>
+              <button className="button" name="BMW" onClick={handleClick}>
+                BMW
+              </button>
+              <button
+                className="button"
+                name="Mercedes-Benz"
+                onClick={handleClick}
+              >
+                MERCEDES-BENZ
+              </button>
+            </div>
+            <Profile />
           </div>
-          <button className="button flex flex-row justify-center items-center gap-[1vw]">
-            <CgProfile className="scale-125" /> Profile
-          </button>
-        </div>
-      </header>
-      <main className="flex flex-row w-full h-[85vh] justify-around items-center">
-        {brandCars.map((car, index) => (
-          <Card key={index} car={car} handleClick={handleModel} />
-        ))}
-      </main>
+        </header>
+        <main className="flex flex-row w-full h-[85vh] justify-around items-center">
+          {brandCars.map((car, index) => (
+            <Card key={index} car={car} handleClick={handleModel} />
+          ))}
+        </main>
+      </div>
     </>
   );
 }
