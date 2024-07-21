@@ -7,6 +7,7 @@ import {
   BRAND,
   MODEL_NAME,
   MODEL_DATA,
+  LOGİN,
 } from "../actions/actions";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   activeBrandData: [],
   model: "",
   modelData: {},
+  isLogin: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -38,6 +40,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, model: action.payload };
     case MODEL_DATA:
       return { ...state, modelData: action.payload };
+    case LOGİN:
+      return { ...state, isLogin: !state.isLogin };
     default:
       return state;
   }

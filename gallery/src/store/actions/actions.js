@@ -6,6 +6,7 @@ export const BRAND = "BRAND";
 export const ACTIVE_BRAND = "ACTIVE_BRAND";
 export const MODEL_NAME = "MODEL_NAME";
 export const MODEL_DATA = "MODEL_DATA";
+export const LOGİN = "LOGİN";
 
 import axios from "axios";
 
@@ -49,4 +50,8 @@ export const modelName = (name) => {
 
 export const modelData = (data) => {
   return { type: MODEL_DATA, payload: data };
+};
+
+export const login = () => {
+  return { type: LOGİN };
 };

@@ -12,6 +12,7 @@ export default function Home() {
   const allCars = useSelector((store) => store.carData);
   const brand = useSelector((store) => store.brand);
   const brandCars = useSelector((store) => store.activeBrandData);
+  const login = useSelector((store) => store.isLogin);
 
   useEffect(() => {
     if (allCars) {
@@ -30,6 +31,10 @@ export default function Home() {
     dispatch(modelName(e.currentTarget.name));
     history.push("/carPage");
   };
+
+  if (!login) {
+    history.push("/");
+  }
 
   return (
     <>

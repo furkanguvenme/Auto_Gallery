@@ -3,12 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { modelData } from "../store/actions/actions";
 import Loading from "./loading";
 import Example from "./carousel";
+import { useHistory } from "react-router-dom";
 
 export default function CarPage() {
   const dispatch = useDispatch();
+  let history = useHistory();
+  const login = useSelector((store) => store.isLogin);
   const modelName = useSelector((store) => store.model);
   const carData = useSelector((store) => store.modelData);
   const brandData = useSelector((store) => store.activeBrandData);
+  if (!login) {
+    history.push("/");
+  }
 
   useEffect(() => {
     if (modelName) {
@@ -34,6 +40,7 @@ export default function CarPage() {
   }
 
   console.log("carData:", carData);
+
   return (
     <div className="bg-cover bg-[url('https://i.pinimg.com/originals/54/94/f7/5494f774316237246626b2a819b86203.jpg')] w-full h-full">
       <div className="w-full h-full flex flex-col items-center">

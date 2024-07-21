@@ -3,7 +3,7 @@ import "./login.css";
 import Header from "./header";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { loginUser } from "../store/actions/actions";
+import { login, loginUser } from "../store/actions/actions";
 import { useHistory } from "react-router-dom";
 
 const initialLogin = {
@@ -50,6 +50,7 @@ export default function Login() {
       });
     } else {
       dispatch(loginUser(user));
+      dispatch(login());
       history.push("/home");
       toast.success("Başarıyla Giriş Yaptınız!", {
         position: "top-right",
